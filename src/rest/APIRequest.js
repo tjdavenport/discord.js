@@ -55,7 +55,7 @@ class APIRequest {
     return fetch(url, {
       method: this.method,
       headers,
-      agent,
+      agent: this.client.options.http.agent || agent,
       body,
       signal: controller.signal,
     }).finally(() => this.client.clearTimeout(timeout));
